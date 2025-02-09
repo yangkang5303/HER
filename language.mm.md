@@ -16,8 +16,8 @@
 ## 用户层
 - **设备**：手机、电脑、智能音箱
 - **图形界面**（可选）
-  - **APP 开发**：Node.js + React Native
-  - **Web 界面**：React + Vite
+  - **APP 开发**：React Native
+  - **Web 界面**：React Native
 
 ## 前端交互层
 - **语音采集**：麦克风（硬件）  
@@ -27,10 +27,10 @@
 
 ## 语音处理层
 - **ASR（语音识别）**：
-  - **Whisper（OpenAI）** 或 **Vosk（本地）**
-  - Python + `whisper` / `vosk`
+  - **Whisper（OpenAI）
+  - Python + `whisper`
 - **NLU（自然语言理解）**：
-  - **spaCy** / **NLTK** / **GPT-4o API**
+  - **GPT-4o API**
   - Python + `spacy` / `nltk` / `openai`
 - **DM（对话管理）**：
   - Python + `Rasa` 或自定义逻辑（`Langchain` + `LlamaIndex`）
