@@ -33,5 +33,5 @@ var/
 *.swo
 
 # 虚拟环境
-venv/
-ENV/ 
+.venv/
+ENV/

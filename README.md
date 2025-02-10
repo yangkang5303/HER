@@ -43,4 +43,4 @@
 
 ## 快速开始
 
-1. 克隆仓库
+uvicorn app.main:app --reload
