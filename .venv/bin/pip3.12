@@ -1,4 +1,4 @@
-#!/Users/yangkang/HER/.venv/bin/python
+#!/home/yk/HER/.venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

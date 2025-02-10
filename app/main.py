@@ -1,13 +1,14 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
-import openai
+from openai import AsyncOpenAI
 import os
 from dotenv import load_dotenv
 from .models import Base, ChatMessage
 from .schemas import MessageCreate, MessageResponse
 from typing import List
+from sqlalchemy import select
 
 load_dotenv()
 
@@ -30,7 +31,7 @@ AsyncSessionLocal = sessionmaker(
 )
 
 # OpenAI配置
-openai.api_key = os.getenv("OPENAI_API_KEY")
+client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # 启动时创建数据库表
 @app.on_event("startup")
@@ -47,7 +48,7 @@ async def get_db():
 async def create_chat(message: MessageCreate, db: AsyncSession = Depends(get_db)):
     try:
         # 调用OpenAI API
-        response = await openai.ChatCompletion.acreate(
+        response = await client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "user", "content": message.content}
